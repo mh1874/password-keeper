@@ -1,7 +1,7 @@
 <template>
   <main>
     <h3 class="title">Password Keeper</h3>
-    <ul class="mb-3">
+    <ul class="max-h-60 overflow-y-auto py-2 mb-3">
       <li
         v-for="it in accountList"
         class="p-2 border-b border-b-green-300 leading-3"
@@ -33,18 +33,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { ElMessage } from 'element-plus';
+import { sourceData } from './data';
 import { AccountItem } from './types';
 
 const MH = ref('mh1874');
 
-const accountList = ref<AccountItem[]>([
-  {
-    id: 1,
-    system: 'QMS dev',
-    username: 'admin',
-    password: 'j0H8fAC~dY-Z^Uo',
-  },
-]);
+const accountList = ref<AccountItem[]>(sourceData);
 
 const copyPassword = (it: AccountItem) => {
   if (navigator.clipboard) {
@@ -65,7 +59,7 @@ main {
   font-size: 1.5rem;
   font-weight: 200;
   line-height: 1.2rem;
-  margin: 0.5rem auto;
+  margin: 0.5rem 0;
 }
 .version {
   font-size: 0.5rem;
